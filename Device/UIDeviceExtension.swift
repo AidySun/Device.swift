@@ -98,7 +98,17 @@ public enum DeviceType: String, CaseIterable {
             }
         }
 
-        return DeviceType(identifier: identifier)
+        var model = DeviceType(identifier: identifier)
+        
+        if model == .simulator {
+            if let simModelCode = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
+                let simModel = DeviceType(identifier: String.init(validatingUTF8: simModelCode)!)
+                if simModel != .notAvailable {
+                    return simModel
+                }
+            }
+        }
+        return model
     }
 
     // MARK: Variables
