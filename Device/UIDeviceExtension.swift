@@ -113,6 +113,10 @@ public enum DeviceType: String, CaseIterable {
 
     // MARK: Variables
 
+    public var is_iPad: Bool {
+        return DeviceType.current.displayName.contains("iPad")
+    }
+    
     /// The display name of the device type
     public var displayName: String {
 
