@@ -34,6 +34,7 @@ public enum DeviceType: String, CaseIterable {
     case iPhone6SPlus
 
     case iPhoneSE
+    case iPhoneSE2
 
     case iPhone7
     case iPhone7Plus
@@ -145,6 +146,8 @@ public enum DeviceType: String, CaseIterable {
         case .iPhone11: return "iPhone 11"
         case .iPhone11Pro: return "iPhone 11 Pro"
         case .iPhone11ProMax: return "iPhone 11 Pro Max"
+        case .iPhoneSE2: return "iPhone SE2 2nd gen"
+            
         case .iPodTouch1G: return "iPod Touch 1G"
         case .iPodTouch2G: return "iPod Touch 2G"
         case .iPodTouch3G: return "iPod Touch 3G"
@@ -203,6 +206,7 @@ public enum DeviceType: String, CaseIterable {
         case .iPhone11: return ["iPhone12,1"]
         case .iPhone11Pro: return ["iPhone12,3"]
         case .iPhone11ProMax: return ["iPhone12,5"]
+        case .iPhoneSE2: return ["iPhone12,8"]
 
         case .iPodTouch1G: return ["iPod1,1"]
         case .iPodTouch2G: return ["iPod2,1"]
@@ -226,7 +230,7 @@ public enum DeviceType: String, CaseIterable {
         case .iPadPro9Inch: return ["iPad6,3", "iPad6,4"]
         case .iPadPro10p5Inch: return ["iPad7,3", "iPad7,4"]
         case .iPadPro11Inch: return ["iPad8,1", "iPad8,2", "iPad8,3", "iPad8,4"]
-        case .iPadPro12Inch: return ["iPad6,7", "iPad6,8", "iPad7,1", "iPad7,2", "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8"]
+        case .iPadPro12Inch: return ["iPad6,7", "iPad6,8", "iPad7,1", "iPad7,2", "iPad8,5", "iPad8,6", "iPad8,7", "iPad8,8", "iPad8,12"]
         }
     }
 
@@ -256,5 +260,9 @@ public extension UIDevice {
     /// The `DeviceType` of the device in use
     var deviceType: DeviceType {
         return DeviceType.current
+    }
+    
+    var is_iPad: Bool {
+        return deviceType.displayName.contains("iPad")
     }
 }
